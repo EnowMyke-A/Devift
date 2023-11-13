@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!--link to fonts-->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet" />
+
+		<!--swiper-->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+		<!--lottie library link-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+		<link rel="icon" href="../assets/favicon.svg" />
+		<!--font awesome inclusion-->
+		<script
+			src="https://kit.fontawesome.com/6fff8359ae.js"
+			crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" href="../animations/movement.css" />
+		<script src="../animations/movement.js"></script>
+
+		<!--wave suffer-->
+		<script src="https://unpkg.com/wavesurfer.js@7"></script>
+		<script src="https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.min.js"></script>
+		<script src="https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.min.js"></script>
+		<script src="https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.min.js"></script>
+
+		<!--media mp3-->
+		<script src="https://unpkg.com/jsmediatags/dist/jsmediatags.min.js"></script>
+
+		<!--server script-->
+		<script type="module" src="../script.js"></script>
+
+		<link rel="stylesheet" href="./dashboard.css" />
+		<script src="./dashboard.js"></script>
+
+		<title>Devify Music</title>
+	</head>
+	<body>
+		<div class="music-playback hidden">
+			<div>
+				<div class="active album-image" id="album-image"></div>
+				<marquee id="title" behavior="scroll"></marquee>
+			</div>
+			<div class="playback-main">
+				<div class="main-controls">
+					<div class="buttons">
+						<button class="side-buttons">
+							<i class="fa-solid fa-backward-step" onclick="backward()"></i>
+						</button>
+						<button class="special-buttons" id="play-pause">
+							<i class="fa-solid fa-pause" id="play-icon"></i>
+							<i class="fa-solid fa-play hide" id="pause-icon"></i>
+						</button>
+						<button class="side-buttons">
+							<i class="fa-solid fa-forward-step" onclick="forward()"></i>
+						</button>
+					</div>
+				</div>
+				<div class="progress">
+					<div id="time-stamp">-:--</div>
+					<div id="waveform"></div>
+					<div id="total-time">-:--</div>
+				</div>
+			</div>
+			<div class="playback-additional">
+				<div class="buttons">
+					<button id="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+					<button id="Schedule">
+						<i id="repeat" class="fa-solid fa-repeat"></i
+						><i class="fa-solid fa-rotate-right hide" id="round"></i>
+					</button>
+					<label for=""
+						><button id="volume"><i class="fa-solid fa-volume-off"></i></button
+						><input type="range" id="range" value="50" max="100"
+					/></label>
+				</div>
+			</div>
+		</div>
+
+		<div class="Main_menu">
+			<div class="menu_container">
+				<div class="small_logo">
+					<img src="../assets/Logo_white.svg" alt=".logo" />
+					<span class="logo_text">Devify Music</span>
+				</div>
+				<ul class="tab-container">
+					<li class="active-tab tab">
+						<i class="fa-solid fa-house"></i>
+						<span>Home</span>
+					</li>
+					<li class="tab">
+						<i class="fa-solid fa-music"></i>
+						<span>Playlist</span>
+					</li>
+					<li class="tab">
+						<i class="fa-solid fa-compact-disc"></i>
+						<span>Local Music</span>
+					</li>
+				</ul>
+			</div>
+			<div class="menu-additionals">
+				<ul class="menu-additionals-conatiner">
+					<li class="tab">
+						<i class="fa-solid fa-cog"></i>
+						<span>Setting</span>
+					</li>
+					<li>
+						<i class="fa-solid fa-right-from-bracket"></i>
+						<span>Logout</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<section class="main_dashboard_container">
+			<!--Dashboard header-->
+			<div class="main_dash_header">
+				<form action="" class="search_form">
+					<i class="fa-solid fa-search"></i>
+					<input
+						type="search"
+						id="search_input"
+						placeholder="search songs... " />
+				</form>
+				<div>
+					<i class="fa-regular fa-circle-user"></i>
+					<span id="user_name">Mckeys L</span>
+				</div>
+			</div>
+			<!--Dashboard home-->
+			<div class="main_dashboard tab_container" id="home">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="small_logo">
+								<img src="../assets/Logo_white.svg" alt=".logo" />
+								<span class="logo_text">Devify Music</span>
+							</div>
+						</div>
+
+						<div class="swiper-slide">
+							<div class="small_logo">
+								<img src="../assets/Logo_white.svg" alt=".logo" />
+								<span class="logo_text">Devify Music</span>
+							</div>
+							<div>
+								Feel the music's magic, as it whispers secrets and paints
+								dreams.
+							</div>
+						</div>
+
+						<div class="swiper-slide">
+							<div class="small_logo">
+								<img src="../assets/Logo_white.svg" alt=".logo" />
+								<span class="logo_text">Devify Music</span>
+							</div>
+							<div>
+								Immerse yourself in a symphony of emotions, where melodies dance
+								and rhythms ignite the soul.
+							</div>
+						</div>
+					</div>
+					<div class="swiper-pagination"></div>
+					<div class="swiper-button-prev">
+						<i class="fa-solid fa-arrow-left"></i>
+					</div>
+					<div class="swiper-button-next">
+						<i class="fa-solid fa-arrow-right"></i>
+					</div>
+				</div>
+				<div class="song_category_container">
+					<h1 class="category_name">Top Songs</h1>
+					<div class="swiper_song">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide"></div>
+
+							<div class="swiper-slide"></div>
+
+							<div class="swiper-slide"></div>
+
+							<div class="swiper-slide"></div>
+
+							<div class="swiper-slide"></div>
+
+							<div class="swiper-slide"></div>
+						</div>
+						<div class="swiper-button-prev">
+							<i class="fa-solid fa-arrow-left"></i>
+						</div>
+						<div class="swiper-button-next">
+							<i class="fa-solid fa-arrow-right"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Dashboard playlist-->
+			<div class="main_dashboard tab_container hide" id="playlist"></div>
+
+			<!--Dashboard local-->
+			<div class="main_dashboard tab_container hide" id="local-songs">
+				<div id="localMusic_container">
+					<div class="empty_list" style="display: none">
+						<i class="fa-solid fa-file-audio"></i>
+						<span>Music list is empty</span>
+					</div>
+					<div id="localSongContainer"></div>
+					<button id="addLocalSong" onclick="openFolderPicker()">
+						<span>Add music <i class="fa-solid fa-plus"></i></span>
+					</button>
+				</div>
+			</div>
+
+			<!--settings-->
+			<div class="main_dashboard tab_container hide" id="settings"></div>
+
+			<!--search-->
+			<div class="main_dashboard hide" id="search_container"></div>
+		</section>
+
+		<!--wavesurfer config-->
+		<script>
+			const wavesurfer = WaveSurfer.create({
+				container: "#waveform",
+				waveColor: "rgb(83, 84, 82)",
+				progressColor: "rgb(103, 50, 255)",
+				height: 20,
+				url: "../assets/silence.mp3",
+				reponsive: true,
+				hideScrollbar: true,
+				barWidth: 2,
+				barGap: 1.5,
+				normalize: true,
+			});
+
+			var container = document.getElementById("waveform");
+
+			container.addEventListener("click", function () {
+				var currentTime = wavesurfer.getCurrentTime();
+				var minutes = Math.floor(currentTime / 60);
+				var seconds = Math.floor(currentTime % 60);
+				var timeStamp = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+				document.getElementById("time-stamp").innerText = timeStamp;
+			});
+
+			function forward() {
+				let sounds = document.getElementsByClassName("localSong");
+				const currentIndex = JSON.parse(sessionStorage.getItem("LocalIndex"));
+				wavesurfer.load(
+					sounds[(currentIndex + 1) % sounds.length].getAttribute("id")
+				);
+				sessionStorage.setItem(
+					"LocalIndex",
+					(currentIndex + 1) % sounds.length
+				);
+				justExtract((currentIndex + 1) % sounds.length, sounds, sounds.length);
+			}
+
+			function backward() {
+				let sounds = document.getElementsByClassName("localSong");
+				const currentIndex = JSON.parse(sessionStorage.getItem("LocalIndex"));
+				wavesurfer.load(
+					sounds[
+						Math.abs(currentIndex - 1 + sounds.length) % sounds.length
+					].getAttribute("id")
+				);
+				sessionStorage.setItem(
+					"LocalIndex",
+					Math.abs(currentIndex - 1 + sounds.length) % sounds.length
+				);
+				justExtract(
+					Math.abs(currentIndex - 1 + sounds.length) % sounds.length,
+					sounds,
+					sounds.length
+				);
+			}
+
+			const play = document.getElementById("play-pause");
+			const play_icon = document.getElementById("play-icon");
+			const pause_icon = document.getElementById("pause-icon");
+			play.addEventListener("click", function () {
+				if (wavesurfer.isPlaying()) {
+					wavesurfer.pause();
+					pause_icon.classList.add("hide");
+					play_icon.classList.remove("hide");
+				} else {
+					wavesurfer.play();
+					pause_icon.classList.remove("hide");
+					play_icon.classList.add("hide");
+				}
+			});
+
+			wavesurfer.on("load", function () {
+				var currentTime = wavesurfer.getCurrentTime();
+				var duration = wavesurfer.getDuration();
+				var minutes = Math.floor(currentTime / 60);
+				var seconds = Math.floor(currentTime % 60);
+				var dminutes = Math.floor(duration / 60);
+				var dseconds = Math.floor(duration % 60);
+				var timeStamp = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+				var totalTime = dminutes + ":" + (dseconds < 10 ? "0" : "") + dseconds;
+				document.getElementById("time-stamp").innerText = timeStamp;
+				document.getElementById("total-time").innerText = totalTime;
+			});
+
+			wavesurfer.on("audioprocess", function () {
+				var currentTime = wavesurfer.getCurrentTime();
+				var duration = wavesurfer.getDuration();
+				var minutes = Math.floor(currentTime / 60);
+				var seconds = Math.floor(currentTime % 60);
+				var dminutes = Math.floor(duration / 60);
+				var dseconds = Math.floor(duration % 60);
+				var timeStamp = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+				var totalTime = dminutes + ":" + (dseconds < 10 ? "0" : "") + dseconds;
+				document.getElementById("time-stamp").innerText = timeStamp;
+				document.getElementById("total-time").innerText = totalTime;
+			});
+
+			const PlaySchedule = document.getElementById("Schedule");
+			const round = document.getElementById("round");
+			const repeat = document.getElementById("repeat");
+
+			wavesurfer.on("finish", function () {
+				let sounds = document.getElementsByClassName("localSong");
+				let repeatSong = round.classList.contains("hide");
+				wavesurfer.seekTo(0);
+				wavesurfer.pause();
+				pause_icon.classList.remove("hide");
+				play_icon.classList.add("hide");
+				if (repeatSong == true) {
+					wavesurfer.play();
+					pause_icon.classList.add("hide");
+					play_icon.classList.remove("hide");
+				} else {
+					const currentIndex = JSON.parse(sessionStorage.getItem("LocalIndex"));
+					wavesurfer.load(
+						sounds[(currentIndex + 1) % sounds.length].getAttribute("id")
+					);
+					sessionStorage.setItem(
+						"LocalIndex",
+						(currentIndex + 1) % sounds.length
+					);
+					justExtract(
+						(currentIndex + 1) % sounds.length,
+						sounds,
+						sounds.length
+					);
+				}
+			});
+
+			var volumeSlider = document.getElementById("range");
+			window.addEventListener("load", function () {
+				var startVolume = volumeSlider.value / 100;
+				wavesurfer.setVolume(startVolume);
+				volumeSlider.addEventListener("input", function () {
+					var volume = volumeSlider.value / 100;
+					wavesurfer.setVolume(volume);
+				});
+			});
+
+			PlaySchedule.addEventListener("click", function () {
+				round.classList.toggle("hide");
+				repeat.classList.toggle("hide");
+			});
+
+			//wavesurfer configs ends here
+
+			function createLocalSongElement(audioURL, albumPhotoURL, title, index) {
+				const parentContainer = document.querySelector("#localSongContainer");
+				const playbackContainer = document.querySelector(".music-playback");
+
+				// Create the parent div element
+				const localSongDiv = document.createElement("div");
+				localSongDiv.classList.add("localSong");
+
+				// Create the image element
+				localSongDiv.style.backgroundImage = albumPhotoURL
+					? albumPhotoURL
+					: "url(./assets/No_Photo_Music.svg)";
+				localSongDiv.style.backgroundColor = "white";
+
+				// Create the span element for the title
+				const titleSpan = document.createElement("span");
+				titleSpan.classList.add("title");
+				titleSpan.textContent = title ? title : "Unknown Music";
+
+				//Playing animation
+				const Playing = document.createElement("span");
+				Playing.classList.add("soundIndicator");
+				// Load the Lottie animation
+				var animation = bodymovin.loadAnimation({
+					container: Playing,
+					renderer: "svg",
+					loop: true,
+					autoplay: true,
+					path: "../assets/sound_waves.json",
+				});
+
+				// Append the image and span elements to the parent div
+				localSongDiv.appendChild(titleSpan);
+				localSongDiv.appendChild(Playing);
+				localSongDiv.id = audioURL;
+				const x = index;
+
+				localSongDiv.addEventListener("click", function () {
+					const LocalCollection = document.querySelectorAll(".localSong");
+					const LocalId = audioURL;
+					let Songs = document.querySelectorAll(".localSong");
+					Songs.forEach((Songs) => Songs.classList.remove("playing"));
+					localSongDiv.classList.add("playing");
+					wavesurfer.stop();
+					wavesurfer.load(audioURL);
+					sessionStorage.setItem("LocalIndex", JSON.stringify(x));
+					document.getElementById("album-image").style.backgroundImage =
+						albumPhotoURL;
+					document.getElementById("title").textContent = title
+						? title
+						: "Unknown Music";
+					wavesurfer.on("ready", function () {
+						wavesurfer.play();
+						playbackContainer.classList.remove("hidden");
+					});
+				});
+
+				parentContainer.appendChild(localSongDiv);
+			}
+
+			function justExtract(index, arr, Length) {
+				audioURL = LocalPath[index];
+				console.log(audioURL);
+				const jsmediatags = window.jsmediatags;
+				jsmediatags.read(audioURL, {
+					onSuccess: function (tag) {
+				
+							document.getElementById("title").textContent = tag.tags.title
+								? tag.tags.title
+								: "Unknown Music";
+							const data = tag.tags.picture.data?tag.tags.picture.data:[];
+							const format = tag.tags.picture.format;
+							let base64String = "";
+							for (let i = 0; i < data.length; i++) {
+								base64String += String.fromCharCode(data[i]);
+							}
+							document.getElementById("album-image").style.backgroundImage =
+								`url(data:${format};base64,${window.btoa(base64String)})`
+									? `url(data:${format};base64,${window.btoa(base64String)})`
+									: "url(./assets/No_Photo_Music.svg)";
+							for (i = 0; i < Length; i++) {
+								arr[i].classList.remove("playing");
+							}
+							arr[index].classList.add("playing");
+					},
+					onError: function (error) {
+						console.error("Error extracting album image:", error);
+					},
+				});
+			}
+
+			function extractAlbum(audioURL, index, address) {
+				const jsmediatags = window.jsmediatags;
+				jsmediatags.read(audioURL, {
+					onSuccess: function (tag) {
+							const title = tag.tags.title;
+
+							const data = tag.tags.picture.data?tag.tags.picture.data:[];
+							const format = tag.tags.picture.format;
+							let base64String = "";
+							for (let i = 0; i < data.length; i++) {
+								base64String += String.fromCharCode(data[i]);
+							}
+							createLocalSongElement(
+								address,
+								`url(data:${format};base64,${window.btoa(base64String)})`,
+								title,
+								index
+							);
+					},
+					onError: function (error) {
+						console.error("Error extracting album image:", error);
+					},
+				});
+			}
+
+			let LocalPath = [];
+
+			function openFolderPicker() {
+				const input = document.createElement("input");
+				input.type = "file";
+				input.directory = true;
+				input.multiple = true;
+				input.accept = "audio/mp3";
+
+				input.addEventListener("change", function (event) {
+					const file = event.target.files;
+					var i = 0;
+					let address = [];
+					for (i; i < this.files.length; i++) {
+						const filePath = URL.createObjectURL(file[i]);
+						extractAlbum(file[i], i, filePath, 1);
+						LocalPath.push(file[i]);
+						console.log(LocalPath);
+						sessionStorage.setItem("LocalPaths", LocalPath);
+					}
+					console.log(sessionStorage.getItem("LocalPaths")[0]);
+				});
+				input.click();
+			}
+		</script>
+		<!-- swiper-1 config-->
+		<script>
+			const swiper = new Swiper(".swiper-container", {
+				slidesPerView: 1,
+				spaceBetween: 75,
+				pagination: {
+					el: ".swiper-pagination",
+					clickable: true,
+				},
+				autoplay: {
+					delay: 3000,
+				},
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
+			});
+		</script>
+		<!--swiper-2 config-->
+		<script>
+			const swipe = new Swiper(".swiper_song", {
+				// If we need pagination
+				touchRatio: 0.1,
+				slidesPerView: 5,
+
+				// Navigation arrows
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
+
+				// And if we need scrollbar
+				scrollbar: {
+					el: ".swiper-scrollbar",
+				},
+				spaceBetween: 20,
+			});
+		</script>
+	</body>
+</html>
